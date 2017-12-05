@@ -19,11 +19,12 @@ namespace Bombardier.WPF.MockServices
                 Name = "Sieć 1",
                 Items = new List<Item>
                 {
-                    new ShuntingSignal { Id = 1, Name = "Signal 1"},
-                    new RLSignal { Id = 2, Name = "Signal 2"},
-                    new LevelCrossing { Id = 3, Name = "Przejazd kolejowy 1"}
+                    new StationSignal { Id = 1,  Name = "R", Direction = Direction.Nominal },
+                    new Section { Id = 4, Name = "it309", State = SectionState.OutOfControl },
+                    new Section { Id = 5, Name = "OT A", State = SectionState.OutOfControl },
+                    new Section { Id = 6, Name = "OT B", State = SectionState.OutOfControl },
+                    new StationSignal { Id = 2, Name = "C", Direction = Direction.Reverse },
                 }
-
             };
         }
 

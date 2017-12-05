@@ -41,12 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="LevelCrossing.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Point.cs" />
+    <Compile Include="RLSignal.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="SectionState.cs" />
+    <Compile Include="ShuntingSignal.cs" />
     <Compile Include="Signal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StationSignal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

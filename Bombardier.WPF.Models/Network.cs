@@ -8,6 +8,7 @@ namespace Bombardier.WPF.Models
 {
     public class Network : Base
     {
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

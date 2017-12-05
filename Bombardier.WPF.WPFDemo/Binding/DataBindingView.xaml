@@ -8,8 +8,9 @@
         Title="DataBindingView" Height="300" Width="300">
     <Grid>
 
-        <StackPanel>
-            <Label Content="{Binding Path=Name}" />
+        <StackPanel Margin="20">
+            <TextBox Text="{Binding Path=Id}" />
+            <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
         </StackPanel>
         
     </Grid>

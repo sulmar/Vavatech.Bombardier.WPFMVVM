@@ -5,19 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bombardier.WPF.WPFClient.Views"
         xmlns:vm="clr-namespace:Bombardier.WPF.ViewModels;assembly=Bombardier.WPF.ViewModels"
+        Background="Black"
         mc:Ignorable="d"
-        Title="NetworkView" Height="300" Width="300">
+        Title="NetworkView" Height="300" Width="700">
+
+
 
     <Window.DataContext>
         <vm:NetworkViewModel />
     </Window.DataContext>
     <Grid>
 
-        <StackPanel>
-            <Label Content="{Binding Network.Name}" />
+        <DockPanel>
+            
+            <!--<Label Content="{Binding Network.Name}" />-->
 
-            <ListBox ItemsSource="{Binding Network.Items}" />
+            <StackPanel 
+                Width="200"
+                DockPanel.Dock="Right">
+                
+                <Label Content="Id" />
+                <TextBox Text="{Binding SelectedItem.Id, UpdateSourceTrigger=PropertyChanged}" 
+                        >
 
-        </StackPanel>
+                    <!--<TextBox.InputBindings>
+                        <KeyBinding Key="Enter" />
+                    </TextBox.InputBindings>-->
+                </TextBox>
+
+                <Label Content="Name" />
+                <TextBox Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Label Content="State" />
+                
+                <ComboBox ItemsSource="{Binding SectionStates}"
+                        
+                          >
+                </ComboBox>
+
+            </StackPanel>
+            
+            <ListBox 
+                Style="{StaticResource ListBoxStyle}"
+                ItemsSource="{Binding Network.Items}"
+                SelectedItem="{Binding SelectedItem}"
+                
+                >
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+            </ListBox>
+
+
+          
+
+            <!--<Button>Send</Button>
+
+            <Button>Print</Button>
+
+            <Button>Run</Button>
+
+            <Button Style="{StaticResource HelpButtonStyle}" Background="#FF01C911">Help</Button>-->
+
+
+
+
+        </DockPanel>
     </Grid>
 </Window>

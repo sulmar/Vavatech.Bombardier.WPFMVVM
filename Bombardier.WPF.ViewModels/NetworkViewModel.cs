@@ -13,6 +13,10 @@ namespace Bombardier.WPF.ViewModels
     {
         public Network Network { get; set; }
 
+        public Item SelectedItem { get; set; }
+
+        public IEnumerable<SectionState> SectionStates { get; set; }
+
         private readonly INetworkService networkService;
 
         public NetworkViewModel()
@@ -25,6 +29,8 @@ namespace Bombardier.WPF.ViewModels
             this.networkService = networkService;
 
             Network = networkService.Get(1);
+
+            SectionStates = Enum.GetValues(typeof(SectionState)).Cast<SectionState>();
         }
     }
 }

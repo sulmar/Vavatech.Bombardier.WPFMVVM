@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Bombardier.WPF.Models
 {
-    public abstract class Signal : Item
+    public enum SectionState
     {
-        public Direction Direction { get; set; }
+        Free,
+
+        Occupancy,
+
+        OutOfControl
 
     }
-        
 }

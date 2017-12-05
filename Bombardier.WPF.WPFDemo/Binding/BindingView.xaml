@@ -19,6 +19,8 @@
                 </Button.LayoutTransform>
             </Button>
 
+            <TextBox Text="{Binding ElementName=slider1, Path=Value, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" />
+
             <Slider Name="slider1" Minimum="0" Maximum="200" Value="50"
                     />
         </StackPanel>

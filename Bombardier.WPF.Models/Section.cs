@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Bombardier.WPF.Models
 {
-    public abstract class Signal : Item
+    public class Section : Item
     {
-        public Direction Direction { get; set; }
-
+        public SectionState State { get; set; }
     }
-        
 }

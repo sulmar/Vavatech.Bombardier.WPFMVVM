@@ -89,12 +89,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Content Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Page Include="Views\NetworkView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bombardier.WPF.Models\Bombardier.WPF.Models.csproj">
+      <Project>{7fe30866-b14a-4b3d-80a2-9f3161e2f456}</Project>
+      <Name>Bombardier.WPF.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bombardier.WPF.ViewModels\Bombardier.WPF.ViewModels.csproj">
       <Project>{b9eac3f2-cd06-4dcc-8779-fc88e12cbdae}</Project>
       <Name>Bombardier.WPF.ViewModels</Name>
