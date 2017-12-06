@@ -26,11 +26,66 @@
         </StackPanel>
     </DataTemplate>
 
+
+    <Style x:Key="SectionStyle" TargetType="Rectangle">
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Height" Value="10" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding State}" Value="Free">
+                <!--<DataTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="Gray" Duration="0:0:1" Storyboard.TargetProperty="Fill.Color" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </DataTrigger.EnterActions>-->
+                <Setter Property="Fill" Value="Gray"  />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding State}" Value="Occupancy">
+                <Setter Property="Fill" Value="Red" />
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding State}" Value="OutOfControl">
+                <Setter Property="Fill" Value="White" />
+            </DataTrigger>
+
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="LabelSectionStyle" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Height" Value="50" />
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        
+                        <DoubleAnimation From="50" 
+                                         To="100" 
+                                         Duration="0:0:2" 
+                                         Storyboard.TargetProperty="Height" />
+
+                        <ColorAnimation To="Red" 
+                                        Duration="0:0:1" 
+                                        Storyboard.TargetProperty="Foreground.Color" />
+                    </Storyboard>
+                </BeginStoryboard>
+
+             
+
+            </EventTrigger>
+
+        </Style.Triggers>
+    </Style>
+    
     <DataTemplate DataType="{x:Type model:Section}">
         <StackPanel>
-            <Label Content="{Binding Name}" HorizontalAlignment="Center" 
-                   Foreground="{StaticResource MyForegroundBrush}" />
-            <Rectangle Width="80" Height="10" Fill="White" />
+            <Label Content="{Binding Name}" Style="{StaticResource LabelSectionStyle}" />
+            <Rectangle Style="{StaticResource SectionStyle}" />
         </StackPanel>
     </DataTemplate>
 
@@ -50,6 +105,9 @@
     </Style>
 
 
+   
+  
+
     <TransformGroup x:Key="ReverseTransform" >
         <RotateTransform Angle="180" />
         <TranslateTransform Y="-40" />
@@ -64,9 +122,16 @@
         
     </Style>
 
+    <GeometryGroup x:Key="SignalGeometry">
+        <EllipseGeometry RadiusX="20" RadiusY="20" Center="10,10" />
+        <!--<LineGeometry StartPoint="0,0" EndPoint="0,20" />
+        <LineGeometry StartPoint="20,0" EndPoint="20,20" />-->
+    </GeometryGroup>
+
     <DataTemplate DataType="{x:Type model:StationSignal}">
         <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5, 0.5" 
                     Style="{StaticResource StationSignalPanelStyle}" >
+
             <Ellipse Style="{StaticResource StationSignalStyle}" />
             <Line X1="0" X2="20" VerticalAlignment="Center" StrokeThickness="1" Stroke="White" />
             <Line Y1="0" Y2="20" StrokeThickness="1" Stroke="White" />

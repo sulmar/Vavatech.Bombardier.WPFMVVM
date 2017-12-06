@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B9EAC3F2-CD06-4DCC-8779-FC88E12CBDAE}</ProjectGuid>
+    <ProjectGuid>{63F52715-ACA5-4B90-A3F7-2C85FA78330A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bombardier.WPF.ViewModels</RootNamespace>
-    <AssemblyName>Bombardier.WPF.ViewModels</AssemblyName>
+    <RootNamespace>Bombardier.WPF.Common</RootNamespace>
+    <AssemblyName>Bombardier.WPF.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,27 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseViewModel.cs" />
-    <Compile Include="NetworkViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Bombardier.WPF.Common\Bombardier.WPF.Common.csproj">
-      <Project>{63f52715-aca5-4b90-a3f7-2c85fa78330a}</Project>
-      <Name>Bombardier.WPF.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bombardier.WPF.IServices\Bombardier.WPF.IServices.csproj">
-      <Project>{AABEEC8F-AE11-4983-880E-85E5E7128179}</Project>
-      <Name>Bombardier.WPF.IServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bombardier.WPF.MockServices\Bombardier.WPF.MockServices.csproj">
-      <Project>{5BCCDE64-EF39-4E34-8699-DFCC22623BD5}</Project>
-      <Name>Bombardier.WPF.MockServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bombardier.WPF.Models\Bombardier.WPF.Models.csproj">
-      <Project>{7FE30866-B14A-4B3D-80A2-9F3161E2F456}</Project>
-      <Name>Bombardier.WPF.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombardier.WPF.MockServices
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombardier.WPF.UnitTests", "Bombardier.WPF.UnitTests\Bombardier.WPF.UnitTests.csproj", "{4A7847D5-93F6-4C90-8D2E-F1A26EF4E3E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bombardier.WPF.Common", "Bombardier.WPF.Common\Bombardier.WPF.Common.csproj", "{63F52715-ACA5-4B90-A3F7-2C85FA78330A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4A7847D5-93F6-4C90-8D2E-F1A26EF4E3E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A7847D5-93F6-4C90-8D2E-F1A26EF4E3E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A7847D5-93F6-4C90-8D2E-F1A26EF4E3E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F52715-ACA5-4B90-A3F7-2C85FA78330A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F52715-ACA5-4B90-A3F7-2C85FA78330A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F52715-ACA5-4B90-A3F7-2C85FA78330A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F52715-ACA5-4B90-A3F7-2C85FA78330A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

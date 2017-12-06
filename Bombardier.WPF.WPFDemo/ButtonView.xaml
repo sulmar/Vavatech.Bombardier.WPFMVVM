@@ -1,0 +1,51 @@
+﻿<Window x:Class="Bombardier.WPF.WPFDemo.ButtonView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bombardier.WPF.WPFDemo"
+        mc:Ignorable="d"
+        Title="ButtonView" Height="300" Width="300">
+    <Grid Margin="50">
+
+
+        <StackPanel>
+
+            <Button Width="70"
+                    Height="70">
+                <Ellipse Width="25" Height="25" Fill="Red" />
+            </Button>
+
+        <Button
+            Width="100"
+            Height="100"
+            Background="Red"
+            >
+
+            <Button.Clip>
+
+                    <GeometryGroup>
+                        <EllipseGeometry RadiusX="25" RadiusY="25"
+                                         Center="50,50"
+                                         />
+
+                        <EllipseGeometry RadiusX="15" RadiusY="15"
+                                         Center="50,50"
+                                         />
+
+                        <EllipseGeometry RadiusX="5" RadiusY="5"
+                                         Center="50,50"
+                                         />
+
+                        <EllipseGeometry RadiusX="2" RadiusY="2"
+                                         Center="50,50"
+                                         />
+
+                    </GeometryGroup>
+                </Button.Clip>
+        </Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

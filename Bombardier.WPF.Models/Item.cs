@@ -8,13 +8,53 @@ namespace Bombardier.WPF.Models
 {
     public abstract class Item : Base
     {
-        public int Id { get; set; }
+        #region Id
 
-        public string Name { get; set; }
+        private int _Id;
+        public int Id
+        {
+            get { return _Id; }
+
+            set
+            {
+                _Id = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
+
+        #endregion
+
+        #region Name
+
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FullName));
+            }
+        }
+
+        #endregion
 
         public override string ToString()
         {
             return this.Name;
+        }
+
+
+        public string FullName
+        {
+            get
+            {
+                // interpolacja stringów
+                return $"{Id} {Name}";
+            }
         }
     }
 }

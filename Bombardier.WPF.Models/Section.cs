@@ -8,6 +8,16 @@ namespace Bombardier.WPF.Models
 {
     public class Section : Item
     {
-        public SectionState State { get; set; }
+        private SectionState state;
+        public SectionState State
+        {
+            get { return state; }
+            set
+            {
+                state = value;
+
+                OnPropertyChanged();
+            }
+        }
     }
 }

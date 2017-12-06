@@ -5,15 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bombardier.WPF.WPFClient.Views"
         xmlns:vm="clr-namespace:Bombardier.WPF.ViewModels;assembly=Bombardier.WPF.ViewModels"
-        Background="Black"
+        xmlns:b="clr-namespace:Bombardier.WPF.WPFClient.Behaviors"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="NetworkView" Height="300" Width="700">
+        Style="{StaticResource MyWindowStyle}"
+        Title="NetworkView" Height="400" Width="700">
 
 
 
     <Window.DataContext>
         <vm:NetworkViewModel />
     </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding ResetNetworkCommand}" />
+    </Window.InputBindings>
+    
+    
     <Grid>
 
         <DockPanel>
@@ -39,9 +47,43 @@
                 <Label Content="State" />
                 
                 <ComboBox ItemsSource="{Binding SectionStates}"
+                          SelectedItem="{Binding SelectedItem.State}"
                         
                           >
                 </ComboBox>
+
+
+                <Label Content="{Binding SelectedItem.FullName}" />
+
+                <Label Content="{Binding Network.OccupancyCount}" />
+
+                <Button 
+                    Content="Reset"
+                    Command="{Binding ResetNetworkCommand}">
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding ResetNetworkCommand}"  />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    
+                    <i:Interaction.Behaviors>
+                        <b:ButtonBehavior SelectedSection="{Binding SelectedItem}" />
+                    </i:Interaction.Behaviors>
+                </Button>
+
+                <Button Content="Help">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Width" Value="100" />
+                                    <Setter Property="Height" Value="100" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
             </StackPanel>
             
@@ -60,7 +102,15 @@
 
             </ListBox>
 
+            <!--<DataGrid DockPanel.Dock="Bottom" AutoGenerateColumns="False"
+                ItemsSource="{Binding Network.Items}">
 
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="State" Binding="{Binding State}" />
+                </DataGrid.Columns>
+                
+            </DataGrid>-->
           
 
             <!--<Button>Send</Button>
