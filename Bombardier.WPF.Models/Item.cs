@@ -42,19 +42,9 @@ namespace Bombardier.WPF.Models
 
         #endregion
 
-        public override string ToString()
-        {
-            return this.Name;
-        }
+        public override string ToString() => Name;
 
-
-        public string FullName
-        {
-            get
-            {
-                // interpolacja stringów
-                return $"{Id} {Name}";
-            }
-        }
+        // interpolacja stringów
+        public string FullName => $"{Id} {Name}";
     }
 }

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bombardier.WPF.IServices
 {
-    public interface INetworkService
+    public interface ISensorsService
     {
-        Network Get(int id);
-
-        Task<Network> GetAsync(int id);
+        event EventHandler<Measure> SensorChanged; 
     }
 }

@@ -66,6 +66,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Behaviors\ButtonBehavior.cs" />
+    <Compile Include="Converters\IntToWordsConverter.cs" />
     <Compile Include="Views\NetworkView.xaml.cs">
       <DependentUpon>NetworkView.xaml</DependentUpon>
     </Compile>
@@ -122,5 +123,6 @@
       <Name>Bombardier.WPF.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

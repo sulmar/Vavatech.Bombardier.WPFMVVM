@@ -7,11 +7,14 @@
         xmlns:vm="clr-namespace:Bombardier.WPF.ViewModels;assembly=Bombardier.WPF.ViewModels"
         xmlns:b="clr-namespace:Bombardier.WPF.WPFClient.Behaviors"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:c="clr-namespace:Bombardier.WPF.WPFClient.Converters"
         mc:Ignorable="d"
         Style="{StaticResource MyWindowStyle}"
         Title="NetworkView" Height="400" Width="700">
 
-
+    <Window.Resources>
+        <c:IntToWordsConverter x:Key="IntToWordsConverter" />
+    </Window.Resources>
 
     <Window.DataContext>
         <vm:NetworkViewModel />
@@ -34,12 +37,17 @@
                 
                 <Label Content="Id" />
                 <TextBox Text="{Binding SelectedItem.Id, UpdateSourceTrigger=PropertyChanged}" 
+                         
                         >
 
                     <!--<TextBox.InputBindings>
                         <KeyBinding Key="Enter" />
                     </TextBox.InputBindings>-->
                 </TextBox>
+
+
+                <Label Content="Słownie Id" />
+                <TextBox Text="{Binding SelectedItem.Id, Converter={StaticResource IntToWordsConverter}, ConverterParameter='short'}"  />
 
                 <Label Content="Name" />
                 <TextBox Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" />
@@ -84,6 +92,17 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
+
+                <Button Content="Get"
+                        Command="{Binding GetCommand}" />
+
+
+                <Label Content="{Binding CurrentMeasure.Value}" />
+
+                <ListBox ItemsSource="{Binding Measures}" 
+                         Background="Transparent"
+                         />
 
             </StackPanel>
             

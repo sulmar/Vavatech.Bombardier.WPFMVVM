@@ -64,10 +64,10 @@
                 <BeginStoryboard>
                     <Storyboard>
                         
-                        <DoubleAnimation From="50" 
+                        <!--<DoubleAnimation From="50" 
                                          To="100" 
                                          Duration="0:0:2" 
-                                         Storyboard.TargetProperty="Height" />
+                                         Storyboard.TargetProperty="Height" />-->
 
                         <ColorAnimation To="Red" 
                                         Duration="0:0:1" 
@@ -139,11 +139,27 @@
             
         </StackPanel>
     </DataTemplate>
+
+
+
+    <Style x:Key="LabelMeasureStyle" TargetType="Label">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="Transparent" />
+
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsOverLimit}" Value="True">
+                <Setter Property="Foreground" Value="Red" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     
-    
 
-
-
+    <DataTemplate DataType="{x:Type model:Measure}">
+        <Grid>
+            <Label Content="{Binding Value}" 
+                   Style="{StaticResource LabelMeasureStyle}" />
+        </Grid>
+    </DataTemplate>
    
 
 </ResourceDictionary>
