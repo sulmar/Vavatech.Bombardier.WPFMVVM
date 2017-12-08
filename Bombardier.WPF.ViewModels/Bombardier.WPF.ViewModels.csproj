@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="ConfigurationViewModel.cs" />
+    <Compile Include="NetworksViewModel.cs" />
     <Compile Include="NetworkViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bombardier.WPF.Common\Bombardier.WPF.Common.csproj">

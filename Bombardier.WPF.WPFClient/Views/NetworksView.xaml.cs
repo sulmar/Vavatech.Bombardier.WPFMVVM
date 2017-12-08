@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Bombardier.WPF.WPFClient.Views
 {
     /// <summary>
-    /// Interaction logic for NetworkView.xaml
+    /// Interaction logic for NetworksView.xaml
     /// </summary>
-    public partial class NetworkView : UserControl
+    public partial class NetworksView : UserControl
     {
-        public NetworkView()
+        public NetworksView()
         {
             InitializeComponent();
-        }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

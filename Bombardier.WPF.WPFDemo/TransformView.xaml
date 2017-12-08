@@ -41,15 +41,17 @@
     
     <Grid>
 
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Button 1" />
-            <Button Content="Button 2" />
-            <Button Content="Button 3" />
+        <StackPanel Orientation="Horizontal" 
+                    Button.Click="StackPanel_Click" >
+            <Button Content="1" />
+            <Button Content="2" />
+            <Button Content="3" />
+            <CheckBox Content="Opcja 1" />
         </StackPanel>
 
-        <Slider Name="slider1"
+        <!--<Slider Name="slider1"
                     Minimum="0"
-                    Maximum="360" />
+                    Maximum="360" />-->
         
     </Grid>
 </Window>

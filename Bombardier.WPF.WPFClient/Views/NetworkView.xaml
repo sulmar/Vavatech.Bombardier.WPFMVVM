@@ -1,4 +1,4 @@
-﻿<Window x:Class="Bombardier.WPF.WPFClient.Views.NetworkView"
+﻿<UserControl     x:Class="Bombardier.WPF.WPFClient.Views.NetworkView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,47 +10,62 @@
         xmlns:c="clr-namespace:Bombardier.WPF.WPFClient.Converters"
         mc:Ignorable="d"
         Style="{StaticResource MyWindowStyle}"
-        Title="NetworkView" Height="400" Width="700">
+        >
 
-    <Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"  />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <UserControl.Resources>
         <c:IntToWordsConverter x:Key="IntToWordsConverter" />
-    </Window.Resources>
+    </UserControl.Resources>
 
-    <Window.DataContext>
+    <UserControl.DataContext>
         <vm:NetworkViewModel />
-    </Window.DataContext>
+    </UserControl.DataContext>
 
-    <Window.InputBindings>
+    <UserControl.InputBindings>
         <KeyBinding Key="Enter" Command="{Binding ResetNetworkCommand}" />
-    </Window.InputBindings>
+    </UserControl.InputBindings>
+
     
+    
+
+
     
     <Grid>
 
         <DockPanel>
-            
-            <!--<Label Content="{Binding Network.Name}" />-->
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Reset" 
+                              Command="{Binding ResetNetworkCommand}" />
+                </MenuItem>
+                <MenuItem Header="Options" />
+                <MenuItem Header="About" />
+            </Menu>
 
-            <StackPanel 
-                Width="200"
-                DockPanel.Dock="Right">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem Content="Statu 1"/>
+                <StatusBarItem Content="Statu 2"/>
+                <StatusBarItem Content="Statu 3"/>
+            </StatusBar>
+
+            <!-- Properties -->
+            
+            <StackPanel DockPanel.Dock="Right" Width="200">
                 
                 <Label Content="Id" />
-                <TextBox Text="{Binding SelectedItem.Id, UpdateSourceTrigger=PropertyChanged}" 
-                         
-                        >
-
-                    <!--<TextBox.InputBindings>
-                        <KeyBinding Key="Enter" />
-                    </TextBox.InputBindings>-->
-                </TextBox>
+                <TextBox Text="{Binding SelectedItem.Id, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"  />
 
 
                 <Label Content="Słownie Id" />
                 <TextBox Text="{Binding SelectedItem.Id, Converter={StaticResource IntToWordsConverter}, ConverterParameter='short'}"  />
 
                 <Label Content="Name" />
-                <TextBox Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 
                 <Label Content="State" />
                 
@@ -105,44 +120,44 @@
                          />
 
             </StackPanel>
+
+
+            <Grid>
+                <TabControl ItemsSource="{Binding Networks}"
+                    SelectedItem="{Binding Network}"
+                    Background="Transparent"
+                    TabStripPlacement="Left"
+                            
+                    ItemTemplate="{StaticResource NetworkTabTemplate}"
+                    ContentTemplate="{StaticResource NetworkTemplate}">
+
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Background" Value="Gray" />
+
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabControl.Resources>
+                </TabControl>
+                
+                
+                
+
+                <Label Content="{Binding IsBusy}" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+               />
+            </Grid>
             
-            <ListBox 
-                Style="{StaticResource ListBoxStyle}"
-                ItemsSource="{Binding Network.Items}"
-                SelectedItem="{Binding SelectedItem}"
-                
-                >
-
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-
-            </ListBox>
-
-            <!--<DataGrid DockPanel.Dock="Bottom" AutoGenerateColumns="False"
-                ItemsSource="{Binding Network.Items}">
-
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="State" Binding="{Binding State}" />
-                </DataGrid.Columns>
-                
-            </DataGrid>-->
-          
-
-            <!--<Button>Send</Button>
-
-            <Button>Print</Button>
-
-            <Button>Run</Button>
-
-            <Button Style="{StaticResource HelpButtonStyle}" Background="#FF01C911">Help</Button>-->
-
-
-
 
         </DockPanel>
+
+
+        
+        
     </Grid>
-</Window>
+</UserControl>

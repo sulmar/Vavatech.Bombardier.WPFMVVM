@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Bombardier.WPF.WPFClient.Resources"
                     xmlns:model="clr-namespace:Bombardier.WPF.Models;assembly=Bombardier.WPF.Models"
+                    xmlns:vm="clr-namespace:Bombardier.WPF.ViewModels;assembly=Bombardier.WPF.ViewModels"
+                    xmlns:v="clr-namespace:Bombardier.WPF.WPFClient.Views"
                     >
 
     
@@ -160,6 +162,47 @@
                    Style="{StaticResource LabelMeasureStyle}" />
         </Grid>
     </DataTemplate>
-   
+
+
+    <DataTemplate x:Key="NetworkTemplate">
+        
+        <!-- Network Items -->
+        <ListBox 
+            Style="{StaticResource ListBoxStyle}"
+            ItemsSource="{Binding Items}"
+            SelectedItem="{Binding DataContext.SelectedItem, 
+                    RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" >
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+        </ListBox>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="NetworkTabTemplate">
+        <Label Content="{Binding Name}" Background="Transparent" >
+            <Label.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </Label.LayoutTransform>
+        </Label>
+    </DataTemplate>
+
+
+    <DataTemplate DataType="{x:Type vm:NetworksViewModel}">
+        <v:NetworksView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NetworkViewModel}">
+        <v:NetworkView />
+    </DataTemplate>
+
+    
+    <DataTemplate DataType="{x:Type vm:ConfigurationViewModel}">
+        <v:ConfigurationView />
+    </DataTemplate>
 
 </ResourceDictionary>

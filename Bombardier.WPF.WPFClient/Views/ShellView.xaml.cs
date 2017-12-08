@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace Bombardier.WPF.WPFClient.Views
 {
     /// <summary>
-    /// Interaction logic for NetworkView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class NetworkView : UserControl
+    public partial class ShellView : Window
     {
-        public NetworkView()
+        public ShellView()
         {
             InitializeComponent();
-        }
-
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

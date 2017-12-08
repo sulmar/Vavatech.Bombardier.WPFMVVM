@@ -14,14 +14,55 @@ namespace Bombardier.WPF.ViewModels
 {
     public class NetworkViewModel : BaseViewModel
     {
-        public Network Network { get; set; }
+
+        private ObservableCollection<Network> _Networks;
+
+        public ObservableCollection<Network> Networks
+        {
+            get { return _Networks; }
+            set {
+                _Networks = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private Network _Network;
+
+        public Network Network
+        {
+            get { return _Network; }
+            set
+            {
+                _Network = value;
+                OnPropertyChanged();
+                //OnPropertyChanged("IsNetworkSelected");
+                // OnPropertyChanged(() => IsNetworkSelected);
+
+                OnPropertyChanged(nameof(IsNetworkSelected));
+            }
+        }
+
+
+        private bool _IsBusy;
+
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set { _IsBusy = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
 
         private Item _SelectedItem;
         public Item SelectedItem
         {
             get { return _SelectedItem; }
-            set { _SelectedItem = value;
+            set {
+                _SelectedItem = value;
 
                 OnPropertyChanged();
 
@@ -62,7 +103,7 @@ namespace Bombardier.WPF.ViewModels
             this.sensorsService = sensorsService;
 
             Measures = new ObservableCollection<Measure>();
-
+            Networks = new ObservableCollection<Network>();
             
 
             SectionStates = Enum.GetValues(typeof(SectionState)).Cast<SectionState>();
@@ -109,7 +150,7 @@ namespace Bombardier.WPF.ViewModels
 
         public bool CanReset()
         {
-            return Network.Items.OfType<Section>().Any(i=>i.State != SectionState.Free);
+            return IsNetworkSelected && Network.Items.OfType<Section>().Any(i=>i.State != SectionState.Free);
         }
 
         #endregion
@@ -123,35 +164,61 @@ namespace Bombardier.WPF.ViewModels
             {
                 if (loadCommand == null)
                 {
-                    loadCommand = new RelayCommand(p => Load());
+                    loadCommand = new RelayCommand(p => LoadAsync());
                 }
 
                 return loadCommand;
             }
         }
 
-        private void Load()
+        public bool IsNetworkSelected
         {
-            var t1 = networkService.GetAsync(1);
+            get { return Network != null; }
+        }
 
-            var t2 = networkService.GetAsync(1);
 
-            var t3 = networkService.GetAsync(1);
+        private void AddNetwork(Network network)
+        {
+            DispatchService.Invoke(() =>
+            {
+                Networks.Add(network);
 
-            // Task.WaitAll()
+                if (!IsNetworkSelected)
+                {
+                    Network = Networks.FirstOrDefault();
+                }
+            });
 
+            
         }
 
         private async void LoadAsync()
         {
-            //networkService.GetAsync(1)
-            //    .ContinueWith(t => Network = t.Result);
+            IsBusy = true;
 
-            Network = await networkService.GetAsync(1);
+            // Network = await networkService.GetAsync(1);
+
+            var task1 = networkService.GetAsync(1)
+                .ContinueWith(t => AddNetwork(t.Result));
+
+            var task2 = networkService.GetAsync(2)
+                .ContinueWith(t => AddNetwork(t.Result));
+
+            var task3 = networkService.GetAsync(3)
+                .ContinueWith(t => AddNetwork(t.Result));
 
 
-            Network = await networkService.GetAsync(2);
+            
+
+
+           //  Task.WaitAll(task1, task2, task3);
+
+            IsBusy = false;
+
+
         }
+
+
 
 
         private ICommand _GetCommand;

@@ -23,5 +23,12 @@ namespace Bombardier.WPF.WPFDemo
         {
             InitializeComponent();
         }
+
+        private void StackPanel_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = e.OriginalSource as Button;
+
+            var number = int.Parse((string) button.Content);
+        }
     }
 }

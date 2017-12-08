@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Bombardier.WPF.WPFClient.Resources">
 
 
-    <Style x:Key="MyWindowStyle" TargetType="Window">
+    <Style x:Key="MyWindowStyle" TargetType="UserControl">
         <Setter Property="Background" Value="Black" />
     </Style>
     

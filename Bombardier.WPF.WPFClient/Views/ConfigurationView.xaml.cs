@@ -15,18 +15,19 @@ using System.Windows.Shapes;
 namespace Bombardier.WPF.WPFClient.Views
 {
     /// <summary>
-    /// Interaction logic for NetworkView.xaml
+    /// Interaction logic for ConfigurationView.xaml
     /// </summary>
-    public partial class NetworkView : UserControl
+    public partial class ConfigurationView : UserControl
     {
-        public NetworkView()
+        public ConfigurationView()
         {
             InitializeComponent();
         }
 
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            //var networkView = new NetworkView();
+            //networkView.Show();
         }
     }
 }
